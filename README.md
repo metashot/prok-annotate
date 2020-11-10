@@ -19,17 +19,17 @@ contigs/genomes.
 1. Fetch the eggNOG database:
 
    ```bash
-   docker run --rm -v /path/eggnog_data:/eggnog_data eggnog-mapper \
-   python /eggnog_mapper/download_eggnog_data.py -y --data_dir /eggnog_data
+   docker run --rm -v /path/to/eggnog_data:/eggnog_data metashot/eggnog-mapper:2.0.1-3 \
+     python /eggnog_mapper/download_eggnog_data.py -y --data_dir /eggnog_data
    ```
 1. Start running the analysis:
 
-  ```bash
-  nextflow run metashot/prok-annotate \
-    --genomes "data/*.fa" \
-    --eggnog_db /path/eggnog_data \
-    --outdir results
-  ```
+   ```bash
+   nextflow run metashot/prok-annotate \
+     --genomes "data/*.fa" \
+     --eggnog_db /path/to/eggnog_data \
+     --outdir results
+   ```
 
 See the file [`nextflow.config`](nextflow.config) for the complete list of
 parameters.
