@@ -3,6 +3,8 @@ nextflow.enable.dsl=2
 // Params:
 //     - outdir
 process eggnog_mapper {
+    tag "${id}"
+
     publishDir "${params.outdir}/eggnog/${id}" , mode: 'copy'
 
     input:

@@ -4,6 +4,8 @@ nextflow.enable.dsl=2
 //     - outdir
 //     - prodigal_mode
 process prodigal {
+    tag "${id}"
+
     publishDir "${params.outdir}/prodigal/${id}" , mode: 'copy'
 
     input:
