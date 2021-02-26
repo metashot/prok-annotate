@@ -9,7 +9,8 @@ process kofamscan {
     input:
     tuple val(id), path(seqs)
     path(kofamscan_profile)
-   
+    path(kofamscan_ko_list)
+
     output:
     path "${id}.detail.txt"
     path "${id}.mapper.txt"
