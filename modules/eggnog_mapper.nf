@@ -8,7 +8,7 @@ process eggnog_mapper {
     publishDir "${params.outdir}/eggnog/${id}" , mode: 'copy'
 
     input:
-    tuple val(id), path(sequences)
+    tuple val(id), path(seqs)
     path(eggnog_db)
    
     output:
@@ -17,7 +17,7 @@ process eggnog_mapper {
     script:
     """  
     python /eggnog_mapper/emapper.py \
-        -i ${sequences} \
+        -i ${seqs} \
         --output eggnog \
         -m diamond \
         --data_dir ${eggnog_db} \
