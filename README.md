@@ -49,7 +49,7 @@ contigs/genomes.
 
 ### Prokka + KofamScan
 
-1. Download [KOfam database](ftp://ftp.genome.jp/pub/db/kofam/) and decompress
+1. Download KOfam database from ftp://ftp.genome.jp/pub/db/kofam/ and decompress
    it (e.g. into the `./kofam_data` folder).
 
 1. Start running the analysis (Prokka + KofamScan):
