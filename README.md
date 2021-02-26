@@ -17,6 +17,8 @@ contigs/genomes.
 
 ## Quick start
 
+### Prokka only
+
 1. Install Docker (or Singulariry) and Nextflow (see
    [Dependences](https://metashot.github.io/#dependencies));
 2. Start running the analysis (Prokka only, bacteria mode):
@@ -27,7 +29,7 @@ contigs/genomes.
      --outdir results
    ```
 
-### eggNOG
+### Prokka + eggNOG
 
 1. Fetch the eggNOG database:
 
@@ -45,7 +47,7 @@ contigs/genomes.
      --outdir results
    ```
 
-### KofamScan
+### Prokka + KofamScan
 
 1. Download KOfam database from ftp://ftp.genome.jp/pub/db/kofam/ and decompress
    it (e.g. into the `./kofam_data` folder).
