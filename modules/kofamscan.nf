@@ -21,7 +21,7 @@ process kofamscan {
         --cpu ${task.cpus} \
         --tmp-dir tmp \
         -o ${id}.detail.txt \
-        -p ${kofamscan_db}/prokaryote.hal \
+        -p ${kofamscan_db}/profiles/prokaryote.hal \
         -k ${kofamscan_db}/ko_list \
         ${seqs}
 
