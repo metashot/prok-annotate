@@ -29,7 +29,7 @@ process kofamscan {
         -f mapper \
         --cpu ${task.cpus} \
         --tmp-dir tmp \
-        --reannotation \
+        --reannotate \
         -o ${id}.mapper.txt \
         -p ${kofamscan_db}/prokaryote.hal \
         -k ${kofamscan_db}/ko_list \
