@@ -21,10 +21,8 @@ workflow {
     }
     
     if ( params.run_kofamscan ) {
-        kofamscan_profile = file(params.kofamscan_profile, type: 'any',
+        kofamscan_db = file(params.kofamscan_db, type: 'dir',
             checkIfExists: true)
-        kofamscan_ko_list = file(params.kofamscan_ko_list, type: 'file',
-            checkIfExists: true)
-        kofamscan(prokka.out.faa, kofamscan_profile, kofamscan_ko_list)
+        kofamscan(prokka.out.faa, kofamscan_db)
     }
 }

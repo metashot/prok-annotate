@@ -8,8 +8,7 @@ process kofamscan {
 
     input:
     tuple val(id), path(seqs)
-    path(kofamscan_profile)
-    path(kofamscan_ko_list)
+    path(kofamscan_db)
 
     output:
     path "${id}.detail.txt"
@@ -22,8 +21,8 @@ process kofamscan {
         --cpu ${task.cpus} \
         --tmp-dir tmp \
         -o ${id}.detail.txt \
-        -p ${kofamscan_profile} \
-        -k ${kofamscan_ko_list} \
+        -p ${kofamscan_db}/prokaryote.hal \
+        -k ${kofamscan_db}/ko_list \
         ${seqs}
 
     exec_annotation \
@@ -32,8 +31,8 @@ process kofamscan {
         --tmp-dir tmp \
         --reannotation \
         -o ${id}.mapper.txt \
-        -p ${kofamscan_profile} \
-        -k ${kofamscan_ko_list} \
+        -p ${kofamscan_db}/prokaryote.hal \
+        -k ${kofamscan_db}/ko_list \
         ${seqs}
 
     rm -rf tmp

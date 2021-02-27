@@ -50,7 +50,7 @@ contigs/genomes.
 ### Prokka + KofamScan
 
 1. Download KOfam database from ftp://ftp.genome.jp/pub/db/kofam/ and decompress
-   it (e.g. into the `./kofam_data` folder).
+   it (e.g. into the `./kofamscan_data` folder).
 
 1. Start running the analysis (Prokka + KofamScan):
 
@@ -58,15 +58,9 @@ contigs/genomes.
    nextflow run metashot/prok-annotate \
      --genomes "data/*.fa" \
      --run_kofamscan true \
-     --kofamscan_profile ./kofam_data/profiles/prokaryote.hal \
-     --kofamscan_ko_list ./kofam_data/ko_list \
+     --kofamscan_db ./kofamscan_data \
      --outdir results
    ```
-
-  Note that `kofamscan_profile` can be a directory (e.g.
-  `./kofam_data/profiles/`), `.hmm` (e.g. `./kofam_data/profiles/K00001.hmm`)
-  file, or a `.hal` (e.g. `./kofam_data/profiles/prokaryote.hal`) file (see
-  https://github.com/takaram/kofam_scan/tree/v1.3.0#profiles).
 
 ### Prokka + eggNOG + KofamScan
 
@@ -79,9 +73,8 @@ contigs/genomes.
      --genomes "data/*.fa" \
      --run_eggnog true \
      --run_kofamscan true \
-     --eggnog_db eggnog_data \
-     --kofamscan_profile ./kofam_data/profiles/prokaryote.hal \
-     --kofamscan_ko_list ./kofam_data/ko_list \
+     --eggnog_db ./eggnog_data \
+     --kofamscan_db ./kofamscan_data \
      --outdir results
    ```
 
