@@ -66,7 +66,7 @@ contigs/genomes.
 
 1. Download the eggNOG and KOfam databases (see above).
 
-1. Start running the analysis
+1. Start running the analysis:
 
   ```bash
    nextflow run metashot/prok-annotate \
