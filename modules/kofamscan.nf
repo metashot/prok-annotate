@@ -12,7 +12,6 @@ process kofamscan {
 
     output:
     path "${id}.detail.txt"
-    path "${id}.mapper.txt"
 
     script:
     """
