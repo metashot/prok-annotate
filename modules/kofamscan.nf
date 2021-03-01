@@ -25,16 +25,6 @@ process kofamscan {
         -k ${kofamscan_db}/ko_list \
         ${seqs}
 
-    exec_annotation \
-        -f mapper \
-        --cpu ${task.cpus} \
-        --tmp-dir tmp \
-        --reannotate \
-        -o ${id}.mapper.txt \
-        -p ${kofamscan_db}/prokaryote.hal \
-        -k ${kofamscan_db}/ko_list \
-        ${seqs}
-
     rm -rf tmp
     """
 }

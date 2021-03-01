@@ -90,8 +90,8 @@ after the pipeline has finished.
   [documentation](https://github.com/hyattpd/prodigal/wiki/understanding-the-prodigal-output).
 - `eggnog` (if `--run_eggnog true`): eggNOG outputs for each input genome
   [documentation](https://github.com/eggnogdb/eggnog-mapper/wiki/eggNOG-mapper-v2).
-- `kofamscan (if `--run_kofamscan true`): KofamScan output for each input
-  genome, both `detail` and `mapper` formats are reported.
+- `kofamscan` (if `--run_kofamscan true`): KofamScan output for each input
+  genome (`detail` format)
 
 ## System requirements
 Please refer to [System
