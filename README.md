@@ -13,7 +13,9 @@ contigs/genomes.
   [eggNOG-mapper](https://github.com/eggnogdb/eggnog-mapper) v2 and the [eggNOG
   v5.0](http://eggnog-mapper.embl.de/) database (optional);
 - KEGG ortholog assignment by [KofamScan](https://github.com/takaram/kofam_scan)
-  and the KOfam database (https://www.genome.jp/tools/kofamkoala/) (optional).
+  and the KOfam database (https://www.genome.jp/tools/kofamkoala/) (optional);
+- Estimates KEGG pathway completeness using Anvi'o
+  (https://merenlab.org/software/anvio/) (optional).
 
 ## Quick start
 
@@ -90,15 +92,15 @@ parameters.
 The files and directories listed below will be created in the `results` directory
 after the pipeline has finished.
 
-- `prokka`: Prokka outputs for each input genome
-  [documentation](https://github.com/hyattpd/prodigal/wiki/understanding-the-prodigal-output).
-- `eggnog` (if `--run_eggnog`): eggNOG outputs for each input genome
-  [documentation](https://github.com/eggnogdb/eggnog-mapper/wiki/eggNOG-mapper-v2).
-- `kofamscan` (if `--run_kofamscan`): KofamScan output for each input
-  genome (`detail` format)
+- `prokka`: Prokka outputs [documentation](https://github.com/hyattpd/prodigal/wiki/understanding-the-prodigal-output);
+- `eggnog` (if `--run_eggnog`): eggNOG outputs
+  [documentation](https://github.com/eggnogdb/eggnog-mapper/wiki/eggNOG-mapper-v2);
+- `kofamscan` (if `--run_kofamscan`): KofamScan output (`detail` format);
 - `anvio` (if `--run_anvio_kofam`): `anvi-estimate-metabolism`
   (https://merenlab.org/software/anvio/help/main/programs/anvi-estimate-metabolism/)
-  outputs  for each input genome (`kofam_hits` and `modules` formats).
+  outputs  for each input genome (`kofam_hits` and `modules` formats). Moreover
+  gene calls in FASTA and text format are reported
+  (`anvi-get-sequences-for-gene-calls` and `anvi-export-gene-calls`).
 
 ## System requirements
 Please refer to [System
