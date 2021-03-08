@@ -31,6 +31,15 @@ process anvio_kofam {
         -f ${genome} \
         -o contigs.db
 
+    anvi-get-sequences-for-gene-calls \
+        -c contigs.db 
+        -o ${id}.gene_calls.fa
+
+    anvi-export-gene-calls \
+        -c contigs.db \
+        --gene-caller prodigal \
+        -o ${id}.gene_calls.txt
+
     anvi-run-kegg-kofams \
         -c contigs.db \
         --kegg-data-dir ${anvio_kofam_db} \
