@@ -15,7 +15,8 @@ contigs/genomes.
 - KEGG ortholog assignment by [KofamScan](https://github.com/takaram/kofam_scan)
   and the KOfam database (https://www.genome.jp/tools/kofamkoala/) (optional);
 - Estimates KEGG pathway completeness using Anvi'o
-  (https://merenlab.org/software/anvio/) (optional).
+  (https://merenlab.org/software/anvio/) (optional);
+- Automatic database download.
 
 ## Quick start
 
