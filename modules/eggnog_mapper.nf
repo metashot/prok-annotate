@@ -1,7 +1,19 @@
 nextflow.enable.dsl=2
 
-// Params:
-//     - outdir
+process eggnog_db_download {
+
+    publishDir "${params.outdir}/dbs" , mode: 'copy'
+
+    output:
+    path 'eggnog_db', type: 'dir', emit: eggnog_db
+
+    script:
+    """
+    mkdir eggnog_db
+    python /eggnog_mapper/download_eggnog_data.py -y --data_dir eggnog_db
+    """
+}
+
 process eggnog_mapper {
     tag "${id}"
 

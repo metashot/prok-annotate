@@ -1,6 +1,5 @@
 nextflow.enable.dsl=2
 
-
 process kofamscan {
     tag "${id}"
 

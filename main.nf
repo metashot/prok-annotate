@@ -3,8 +3,11 @@
 nextflow.enable.dsl=2
 
 include { prokka } from './modules/prokka'
-include { eggnog_mapper } from './modules/eggnog_mapper'
+include { eggnog_db_download; eggnog_mapper } from './modules/eggnog_mapper'
 include { kofamscan } from './modules/kofamscan'
+include { kofamscan_db_download } from './modules/utils'
+include { anvio_kofam_db_download; anvio_kofam} from './modules/anvio'
+
 
 workflow {
     
@@ -13,16 +16,49 @@ workflow {
         .map { file -> tuple(file.baseName, file) }
         .set { genomes_ch }
 
+    // Prokka
     prokka(genomes_ch)
 
+    // eggNOG
     if ( params.run_eggnog ) {
-        eggnog_db = file(params.eggnog_db, type: 'dir', checkIfExists: true)
+        if (params.eggnog_db == 'none') {
+            eggnog_db_download()
+            eggnog_db = eggnog_db_download.out.eggnog_db
+        }
+        else {
+            eggnog_db = file(params.eggnog_db, type: 'dir', 
+                checkIfExists: true)
+        }
+
         eggnog_mapper(prokka.out.faa, eggnog_db)
     }
     
+    // KofamScan 
     if ( params.run_kofamscan ) {
-        kofamscan_db = file(params.kofamscan_db, type: 'dir',
-            checkIfExists: true)
+        if (params.kofamscan_db == 'none') {
+            kofamscan_db_download()
+            kofamscan_db = kofamscan_db_download.out.kofamscan_db
+        }
+        else {
+            kofamscan_db = file(params.kofamscan_db, type: 'dir', 
+                checkIfExists: true)
+        }
+
         kofamscan(prokka.out.faa, kofamscan_db)
     }
+
+    // Anvi'o kofam
+    if ( params.run_anvio_kofam ) {
+        if (params.anvio_kofam_db == 'none') {
+            anvio_kofam_db_download()
+            anvio_kofam_db = anvio_kofam_db_download.out.anvio_kofam_db
+        }
+        else {
+            anvio_kofam_db = file(params.anvio_kofam_db, type: 'dir', 
+                checkIfExists: true)
+        }
+
+        anvio_kofam(genomes_ch, anvio_kofam_db)
+    }
+
 }

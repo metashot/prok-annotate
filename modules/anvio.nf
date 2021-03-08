@@ -1,0 +1,47 @@
+nextflow.enable.dsl=2
+
+process anvio_kofam_db_download {
+
+    publishDir "${params.outdir}/dbs" , mode: 'copy'
+
+    output:
+    path 'anvio_kofam_db', type: 'dir', emit: anvio_kofam_db
+
+    script:
+    """
+    anvi-setup-kegg-kofams --kegg-data-dir ./anvio_kofam_db
+    """
+}
+
+process anvio_kofam {
+    tag "${id}"
+
+    publishDir "${params.outdir}/anvio/${id}" , mode: 'copy'
+
+    input:
+    tuple val(id), path(genome)
+    path(anvio_kofam_db)
+   
+    output:
+    path "${id}.*"
+   
+    script:
+    """
+    anvi-gen-contigs-database \
+        -f ${genome} \
+        -o contigs.db
+
+    anvi-run-kegg-kofams \
+        -c contigs.db \
+        --kegg-data-dir ${anvio_kofam_db} \
+        -T ${task.cpus}
+
+    anvi-estimate-metabolism \
+        -c contigs.db \
+        --kegg-data-dir ${anvio_kofam_db} \
+        -O ${id}. \
+        --kegg-output-modes kofam_hits,modules
+
+    rm -rf contigs.db
+    """
+}
