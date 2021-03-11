@@ -32,7 +32,7 @@ process anvio_kofam {
         -o contigs.db
 
     anvi-get-sequences-for-gene-calls \
-        -c contigs.db 
+        -c contigs.db \
         -o ${id}.gene_calls.fa
 
     anvi-export-gene-calls \
