@@ -1,4 +1,4 @@
-# prok-annotate
+# metashot/prok-annotate workflow
 
 metashot/prok-annotate is a workflow for functional annotation of prokaryotic
 contigs/genomes.
