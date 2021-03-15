@@ -27,8 +27,14 @@ process anvio_kofam {
    
     script:
     """
+    anvi-script-reformat-fasta \
+        ${genome} \
+        -o contigs.fa \
+        -l 0 \
+        --simplify-names
+
     anvi-gen-contigs-database \
-        -f ${genome} \
+        -f contigs.fa \
         -o contigs.db
 
     anvi-get-sequences-for-gene-calls \
@@ -51,6 +57,6 @@ process anvio_kofam {
         -O ${id}. \
         --kegg-output-modes kofam_hits,modules
 
-    rm -rf contigs.db
+    rm -rf contigs.fa contigs.db 
     """
 }
