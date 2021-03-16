@@ -31,7 +31,8 @@ process anvio_kofam {
         ${genome} \
         -o contigs.fa \
         -l 0 \
-        --simplify-names
+        --simplify-names \
+        --seq-type NT
 
     anvi-gen-contigs-database \
         -f contigs.fa \
