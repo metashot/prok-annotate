@@ -1,16 +1,10 @@
 # metashot/prok-annotate workflow
 
-A Nextflow pipeline for the  functional annotation of prokaryotic genomes.
+A Nextflow pipeline for the functional annotation of prokaryotic genomes.
 
-Cite as:
-> Davide Albanese. (2021, March 15). metashot/prok-annotate: 2.1.2 (Version
-> 2.1.2). Zenodo. http://doi.org/10.5281/zenodo.4605594
-
-[![DOI](https://zenodo.org/badge/311277400.svg)](https://zenodo.org/badge/latestdoi/311277400)
+Cite as: [![DOI](https://zenodo.org/badge/311277400.svg)](https://zenodo.org/badge/latestdoi/311277400)
 
 [MetaShot Home](https://metashot.github.io/)
-
-
 
 ## Main features
 
