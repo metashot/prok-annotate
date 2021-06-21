@@ -10,7 +10,7 @@ process eggnog_db_download {
     script:
     """
     mkdir eggnog_db
-    python /eggnog_mapper/download_eggnog_data.py -y --data_dir eggnog_db
+    download_eggnog_data.py -y --data_dir eggnog_db
     """
 }
 
@@ -24,15 +24,19 @@ process eggnog_mapper {
     path(eggnog_db)
    
     output:
-    path "eggnog*"
+    path "${id}*"
    
     script:
-    """  
-    python /eggnog_mapper/emapper.py \
+    """
+    mkdir temp
+    emapper.py \
         -i ${seqs} \
-        --output eggnog \
+        -o ${id} \
         -m diamond \
+        --itype proteins \
+        --temp_dir temp \
         --data_dir ${eggnog_db} \
         --cpu ${task.cpus}
+    rm -rf temp
     """
 }
