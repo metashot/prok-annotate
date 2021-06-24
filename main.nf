@@ -46,7 +46,7 @@ workflow {
         }
 
         kofamscan(prokka.out.faa, kofamscan_db)
-        merge_kofamscan_hits(kofamscan.out.hits.collect())
+        merge_kofamscan(kofamscan.out.hits.collect())
     }
 
     // Anvi'o kofam
