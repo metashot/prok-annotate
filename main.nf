@@ -31,6 +31,7 @@ workflow {
         }
 
         eggnog_mapper(prokka.out.faa, eggnog_db)
+        merge_eggnog_mapper(eggnog_mapper.out.annotations.collect())
     }
     
     // KofamScan 
@@ -45,6 +46,7 @@ workflow {
         }
 
         kofamscan(prokka.out.faa, kofamscan_db)
+        merge_koramscan_hits(kofamscan.out.hits.collect())
     }
 
     // Anvi'o kofam
@@ -59,6 +61,9 @@ workflow {
         }
 
         anvio_kofam(genomes_ch, anvio_kofam_db)
+        merge_anvio(
+            anvio_kofam.out.hits.collect(),
+            anvio_kofam.out.modules.collect())
     }
 
 }

@@ -10,7 +10,7 @@ process kofamscan {
     path(kofamscan_db)
 
     output:
-    path "${id}.detail.txt"
+    path "${id}.hits.txt", emit: hits
 
     script:
     """
@@ -18,7 +18,7 @@ process kofamscan {
         -f detail \
         --cpu ${task.cpus} \
         --tmp-dir tmp \
-        -o ${id}.detail.txt \
+        -o ${id}.hits.txt \
         -p ${kofamscan_db}/profiles/prokaryote.hal \
         -k ${kofamscan_db}/ko_list \
         ${seqs}

@@ -25,6 +25,7 @@ process eggnog_mapper {
    
     output:
     path "${id}*"
+    path "${id}.emapper.annotations", emit: annotations
    
     script:
     """

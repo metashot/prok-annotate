@@ -24,6 +24,8 @@ process anvio_kofam {
    
     output:
     path "${id}.*"
+    path "${id}._kofam_hits.txt", emit: hits
+    path "${id}._modules.txt", emit: modules
    
     script:
     """
