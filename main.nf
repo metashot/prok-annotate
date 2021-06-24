@@ -5,7 +5,7 @@ nextflow.enable.dsl=2
 include { prokka } from './modules/prokka'
 include { eggnog_db_download; eggnog_mapper } from './modules/eggnog_mapper'
 include { kofamscan } from './modules/kofamscan'
-include { kofamscan_db_download } from './modules/utils'
+include { kofamscan_db_download; merge_anvio; merge_eggnog_mapper; merge_kofamscan } from './modules/utils'
 include { anvio_kofam_db_download; anvio_kofam} from './modules/anvio'
 
 
