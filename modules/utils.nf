@@ -32,8 +32,8 @@ process merge_anvio {
 
     script:
     """
-    python3 merge_anvio_kofam_hits.py -i ${hits}
-    python3 merge_anvio_modules.py -i ${modules}
+    merge_anvio_kofam_hits.py -i ${hits}
+    merge_anvio_modules.py -i ${modules}
     """
 }
 
@@ -48,7 +48,7 @@ process merge_eggnog_mapper {
 
     script:
     """
-    python3 merge_eggnog_mapper.py -i ${annotations}
+    merge_eggnog_mapper.py -i ${annotations}
     """
 }
 
@@ -63,6 +63,6 @@ process merge_kofamscan {
 
     script:
     """
-    python3 merge_kofamscan_hits.py -i ${hits}
+    merge_kofamscan_hits.py -i ${hits}
     """
 }
