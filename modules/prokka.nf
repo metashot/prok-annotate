@@ -21,7 +21,8 @@ process prokka {
         --prefix ${id} \
         --kingdom ${params.prokka_kingdom} \
         $param_prokka_metagenome \
-        --cpus ${task.cpus}
+        --cpus ${task.cpus} \
+        --centre X --compliant
     """
 }
 
