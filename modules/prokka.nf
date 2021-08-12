@@ -10,17 +10,16 @@ process prokka {
 
     output:
     path "${id}/*"
-    tuple val(id), path ("${id}/${id}.faa"), emit: faa
 
     script:
-    param_prokka_metagenome = params.prokka_metagenome ? '--metagenome' : ''
+    param_metagenome = params.metagenome ? '--metagenome' : ''
     """
     prokka \
         $genome \
         --outdir ${id} \
         --prefix ${id} \
         --kingdom ${params.prokka_kingdom} \
-        $param_prokka_metagenome \
+        $param_metagenome \
         --cpus ${task.cpus} \
         --centre X --compliant
     """

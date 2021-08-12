@@ -17,7 +17,14 @@ workflow {
         .set { genomes_ch }
 
     // Prokka
-    prokka(genomes_ch)
+    if ( !params.skip_prokka ) {
+        prokka(genomes_ch)
+    }
+
+    // Prodigal
+    if ( params.run_eggnog || params.run_kofamscan ) {
+        prodigal(genomes_ch)
+    }
 
     // eggNOG
     if ( params.run_eggnog ) {
@@ -30,7 +37,7 @@ workflow {
                 checkIfExists: true)
         }
 
-        eggnog_mapper(prokka.out.faa, eggnog_db)
+        eggnog_mapper(prodigal.out.faa, eggnog_db)
         merge_eggnog_mapper(eggnog_mapper.out.annotations.collect())
     }
     
@@ -45,7 +52,7 @@ workflow {
                 checkIfExists: true)
         }
 
-        kofamscan(prokka.out.faa, kofamscan_db)
+        kofamscan(prodigal.out.faa, kofamscan_db)
         merge_kofamscan(kofamscan.out.hits.collect())
     }
 
