@@ -16,7 +16,7 @@ process prodigal {
     param_metagenome = params.metagenome ? 'meta' : 'single'
     """
     prodigal \
-        -i genome \
+        -i $genome \
         -o ${id}.gbk \
         -a ${id}.faa \
         -p $param_metagenome
