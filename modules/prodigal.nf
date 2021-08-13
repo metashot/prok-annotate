@@ -10,15 +10,16 @@ process prodigal {
 
     output:
     path "${id}/*"
-    tuple val(id), path ("${id}.faa"), emit: faa
+    tuple val(id), path ("${id}/${id}.faa"), emit: faa
 
     script:
     param_metagenome = params.metagenome ? 'meta' : 'single'
     """
+    mkdir ${id}
     prodigal \
         -i $genome \
-        -o ${id}.gbk \
-        -a ${id}.faa \
+        -o ${id}/${id}.gbk \
+        -a ${id}/${id}.faa \
         -p $param_metagenome
     """
 }
