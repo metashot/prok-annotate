@@ -28,6 +28,8 @@ process eggnog_mapper {
     path "${id}.emapper.annotations", emit: annotations
    
     script:
+    param_eggnog_db_mem = params.eggnog_db_mem ? '--dbmem' : ''
+    
     """
     mkdir temp
     emapper.py \
@@ -37,7 +39,8 @@ process eggnog_mapper {
         --itype proteins \
         --temp_dir temp \
         --data_dir ${eggnog_db} \
-        --cpu ${task.cpus}
+        --cpu ${task.cpus} \
+        ${param_eggnog_db_mem}
     rm -rf temp
     """
 }
