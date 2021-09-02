@@ -1,6 +1,6 @@
 # metashot/prok-annotate workflow
 
-A Nextflow pipeline for the functional annotation of prokaryotic genomes.
+A Nextflow pipeline for the functional annotation of prokaryotic genomes and metagenomes.
 
 Cite as: [![DOI](https://zenodo.org/badge/311277400.svg)](https://zenodo.org/badge/latestdoi/311277400)
 
@@ -33,8 +33,10 @@ Cite as: [![DOI](https://zenodo.org/badge/311277400.svg)](https://zenodo.org/bad
      --outdir results
    ```
 
-### eggNOG, KofamScan and Anvi'o Kofam
-eggNOG, KofamScan and Anvi'o Kofam annotations can be executed by setting
+## Documentation
+
+### Run eggNOG, KofamScan and Anvi'o Kofam
+eggNOG, KofamScan and Anvi'o Kofam annotations can be performed by setting
 `--run_eggnog`, `--run_kofamscan` and `--run_anvio_kofam` options:
 
 ```bash
@@ -85,6 +87,20 @@ following lines:
 
   Add `--anvio_kofam_db /path/to/anvio_kofam_db` option to the `nextflow run`
   command.
+
+## Metagenomes
+For metagenomes, we suggest to run the pipeline using the `--metagenome` option using
+EggNOG mapper only: 
+
+```bash
+  nextflow run metashot/prok-annotate \
+    --genomes "contigs/*.fa" \
+    --metagenome \
+    --skip_prokka \
+    --run_eggnog \
+    --eggnog_db_mem \
+    --outdir results
+```
 
 ## Parameters
 See the file [`nextflow.config`](nextflow.config) for the complete list of
