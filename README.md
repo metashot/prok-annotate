@@ -112,7 +112,7 @@ after the pipeline has finished.
 
 ### Main
 - `prokka`: Prokka outputs ([documentation](https://github.com/tseemann/prokka#output-files));
-- `eggnog_*.tsc`: count matrix for each transferred annotations;
+- `eggnog_*.tsv`: count matrix for each transferred annotations;
 - `kofamscan_hits.tsv`: count matrix for KofamScan hits;
 - `anvio_kofam_hits.tsv`: count matrix for Anvio Kofam hits;
 - `anvio_modules.tsv`: module completeness matrix.
