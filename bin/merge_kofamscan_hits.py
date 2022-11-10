@@ -17,8 +17,7 @@ compl_df = pd.DataFrame()
 for input_fn in args.input:
     input_bn = os.path.basename(input_fn)
     input_id = input_bn.split(args.suffix)[0]
-    input_df = pd.read_fwf(input_fn, skiprows=[1],
-        colspecs = [(0, 1), (2, 22), (22, 29), (54, 1024)])
+    input_df = pd.read_csv(input_fn, delimiter='\t', skiprows=[1])
     input_df = input_df[input_df['#'] == '*']
     input_df = input_df.groupby(["KO", "KO definition"]) \
         [["gene name"]].nunique()
