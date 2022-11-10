@@ -15,7 +15,7 @@ process kofamscan {
     script:
     """
     exec_annotation \
-        -f detail \
+        -f detail-tsv \
         --cpu ${task.cpus} \
         --tmp-dir tmp \
         -o ${id}.hits.txt \
