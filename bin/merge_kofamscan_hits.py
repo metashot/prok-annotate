@@ -26,10 +26,4 @@ for input_fn in args.input:
 
 compl_df.fillna(0, inplace=True)
 compl_df.to_csv('kofamscan_hits.tsv', sep='\t', float_format='%.d')
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
 
