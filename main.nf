@@ -3,7 +3,6 @@
 nextflow.enable.dsl=2
 
 include { prokka } from './modules/prokka'
-include { prodigal } from './modules/prodigal'
 include { eggnog_db_download; eggnog_mapper } from './modules/eggnog_mapper'
 include { kofamscan } from './modules/kofamscan'
 include { kofamscan_db_download; merge_anvio; merge_eggnog_mapper; merge_kofamscan } from './modules/utils'
@@ -22,11 +21,6 @@ workflow {
         prokka(genomes_ch)
     }
 
-    // Prodigal
-    if ( params.run_eggnog || params.run_kofamscan ) {
-        prodigal(genomes_ch)
-    }
-
     // eggNOG
     if ( params.run_eggnog ) {
         if (params.eggnog_db == 'none') {
@@ -38,7 +32,7 @@ workflow {
                 checkIfExists: true)
         }
 
-        eggnog_mapper(prodigal.out.faa, eggnog_db)
+        eggnog_mapper(prokka.out.faa, eggnog_db)
         merge_eggnog_mapper(eggnog_mapper.out.annotations.collect())
     }
     
@@ -53,7 +47,7 @@ workflow {
                 checkIfExists: true)
         }
 
-        kofamscan(prodigal.out.faa, kofamscan_db)
+        kofamscan(prokka.out.faa, kofamscan_db)
         merge_kofamscan(kofamscan.out.hits.collect())
     }
 

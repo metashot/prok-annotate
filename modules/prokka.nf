@@ -10,6 +10,7 @@ process prokka {
 
     output:
     path "${id}/*"
+    tuple val(id), path ("${id}/${id}.faa"), emit: faa
 
     script:
     param_metagenome = params.metagenome ? '--metagenome' : ''
