@@ -118,7 +118,6 @@ after the pipeline has finished.
 - `anvio_modules.tsv`: module completeness matrix.
 
 ### Secondary
-- `prodigal`: Prodigal outputs;
 - `eggnog` (if `--run_eggnog`): eggNOG outputs
   ([documentation](https://github.com/eggnogdb/eggnog-mapper/wiki/eggNOG-mapper-v2));
 - `kofamscan` (if `--run_kofamscan`): KofamScan output (`detail` format);
